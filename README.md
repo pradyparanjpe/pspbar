@@ -8,7 +8,7 @@
  - *Please consider using a fancy paid App*
 
 ### Linux
- - Use python's pip to (install locally)[#pip] for the user.
+ - Use python's pip to [install locally](#pip) for the user.
  - *DO NOT INSTALL SYSTEMWIDE (ROOT)*.
  - You shouldn't have to supply root previleges or user-password during installation.
  
