@@ -20,20 +20,46 @@
 '''(WIFI)Internet-monitoring segments'''
 
 
-from psutil import net_if_addrs, net_io_counters
+from os.path import join as joinpath
+from os.path import dirname as pathdirname
+from subprocess import Popen, PIPE
+from psutil import net_io_counters
 from .classes import BarSeg
+
+
+NETCHECK = joinpath(pathdirname(__file__), 'shell_dep',
+                    'netcheck.sh')
 
 
 def ip_addr(_=None) -> tuple:
     '''Create IP ADDRESS string'''
-    for ip_key in net_if_addrs().keys():
-        if "wl" in ip_key:
-            for sub_dev in list(net_if_addrs()[ip_key]):
-                if sub_dev.netmask and sub_dev.broadcast:
-                    addr = sub_dev.address
-                    if addr.split(".")[:2] == ["192", "168"]:
-                        return {'magnitude': ".".join(addr.split(".")[2:])}
-                    return {'magnitude': sub_dev.address}
+    color = 0x777777
+    stdout, stderr = Popen(
+        ['bash', NETCHECK], stdout=PIPE, stderr=PIPE
+    ).communicate()
+    stdout = stdout.decode("utf-8")
+    print("NET_STATUS:", stdout, stderr)
+    if not stderr:
+        addr = stdout.split("\t")[0]
+        net_type = int(stdout.split("\t")[2])
+        if net_type & 8:
+            # internet connected
+            color += 0x008800
+        elif net_type & 4:
+            # intranet connected
+            color += 0x888800
+        else:
+            color += 0x880000
+        if net_type & 2:
+            # On home network
+            color += 0x000088
+        elif net_type & 1:
+            color += 0x000044
+        ml_tag = [f'<span foreground="#{hex(color)[2:]}">', '</span>']
+        if addr.split(".")[:2] == ["192", "168"]:
+            return {'magnitude': ".".join(addr.split(".")[2:]),
+                    'ml_tag': ml_tag}
+        return {'magnitude': addr}
     return {'vis': False}
 
 

@@ -24,7 +24,7 @@ from setuptools import setup
 
 
 with open("./LongDescription", 'r') as README_FILE:
-    long_description = README_FILE.read()
+    LONG_DESCRIPTION = README_FILE.read()
 
 
 setup(
@@ -32,12 +32,15 @@ setup(
     version='0.0.0.0dev1',
     description="Prady's Swaybar in Python",
     license="GPLv3",
-    long_description=long_description,
+    long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
     author='Pradyumna Paranjape',
     author_email='pradyparanjpe@rediffmail.com',
     url="https://github.com/pradyparanjpe",
     packages=['pspbar'],
     install_requires=['psutil'],
-    scripts=['bin/pspbar',],
+    scripts=['bin/pspbar', ],
+    package_data={
+        'pspbar': ['shell_dep/netcheck.sh']
+    },
 )
