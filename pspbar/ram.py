@@ -29,9 +29,9 @@ def ram_use(_=None) -> tuple:
     ram_fill = virtual_memory().percent
     ml_tag = ['', '']
     if ram_fill > 80:
-        ml_tag = ['<span foreground="#FF5533FF">', '</span>']
+        ml_tag = ['<span foreground="#ff5f5fff">', '</span>']
     elif ram_fill > 60:
-        ml_tag = ['<span foreground="#FFFF33FF">', '</span>']
+        ml_tag = ['<span foreground="#ffff5fff">', '</span>']
     return {'magnitude': f"{ram_fill:.0f}", 'ml_tag': ml_tag}
 
 

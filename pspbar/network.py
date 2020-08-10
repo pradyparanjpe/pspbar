@@ -44,17 +44,17 @@ def ip_addr(_=None) -> tuple:
         net_type = int(stdout.split("\t")[2])
         if net_type & 8:
             # internet connected
-            color += 0x008800
+            color += 0x007f00  # #007f00
         elif net_type & 4:
             # intranet connected
-            color += 0x888800
+            color += 0x7f7f00  # #7f7f00
         else:
-            color += 0x880000
+            color += 0x7f0000  # #7f0000
         if net_type & 2:
             # On home network
-            color += 0x000088
+            color += 0x00007f  # #00007f  #007f7f  #7f7f7f #7f007f
         elif net_type & 1:
-            color += 0x000044
+            color += 0x00003f  # #00003f  #007f3f  #7f7f3f #7f003f
         ml_tag = [f'<span foreground="#{hex(color)[2:]}">', '</span>']
         if addr.split(".")[:2] == ["192", "168"]:
             return {'magnitude': ".".join(addr.split(".")[2:]),

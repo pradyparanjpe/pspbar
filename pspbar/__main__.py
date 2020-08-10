@@ -29,7 +29,7 @@ from .updatebar import main
 if __name__ in ['__main__', 'pspbar.__main__']:
     if 'psutil' not in modules:
         while True:
-            print('<span foreground="#FF7755FF"> Install psutil',
+            print('<span foreground="#ff7f7fff"> Install psutil',
                   'meanwhile, falling back to basic:\t',
                   datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                   '</span>', flush=True)

@@ -62,25 +62,26 @@ def battery(mem=None) -> tuple:
     bat_fill = bat_probe.percent
     bat_conn = bat_probe.power_plugged
     if bat_conn:
-        sym_ml = ['<span foreground="#77AAFFFF">', '</span>']
+        sym_ml = ['<span foreground="#7fffffff">', '</span>']
     # Action
     mem = _bat_act(conn=bat_conn, fill=bat_fill, mem=mem)
     # returns
     ml_tag = ['', '']
     if bat_fill >= 100:
         sym, val = EMOJIS['bat_100'], "100"
-        ml_tag = ['<span foreground="#77AAFFFF">', '</span>']
+        ml_tag = ['<span foreground="#7fffffff">', '</span>']
     elif bat_fill > 75:
         sym, val = EMOJIS['bat_75'], f"{bat_fill:.2f}"
-        ml_tag = ['<span foreground="#FFFF55FF">', '</span>']
+        ml_tag = ['<span foreground="#ffff7fff">', '</span>']
     elif bat_fill > 50:
         sym, val = EMOJIS['bat_50'], f"{bat_fill:.2f}"
-        ml_tag = ['<span foreground="#FF5555FF">', '</span>']
+        ml_tag = ['<span foreground="#ffaf7fff">', '</span>']
     elif bat_fill > 25:
         sym, val = EMOJIS['bat_25'], f"{bat_fill:.2f}"
-        ml_tag = ['<span foreground="#FF3333FF">', '</span>']
+        ml_tag = ['<span foreground="#ff7f7fff">', '</span>']
     else:
         sym, val = EMOJIS['bat_0'], f"{bat_fill:.2f}"
+        ml_tag = ['<span foreground="#ff5f5fff">', '</span>']
     sym = sym_ml[0] + sym + sym_ml[1]
     return {'symbol': sym, 'magnitude': val, 'mem': mem, 'ml_tag': ml_tag}
 
