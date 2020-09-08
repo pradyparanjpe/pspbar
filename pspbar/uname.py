@@ -30,4 +30,4 @@ def osname(_=None) -> tuple:
 
 
 OSNAME = BarSeg(symbol=chr(0x1f427), method=osname,
-                ml_tag=['<span foreground="#7f9fffff">', '</span>'])
+                ml_tag=['<span foreground=\\"#7f9fffff\\">', '</span>'])

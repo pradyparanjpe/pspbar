@@ -40,13 +40,13 @@ def heat_mon(_=None) -> tuple:
     heat = sensors_temperatures()['coretemp'][0].current
     if heat > 80:
         sym, val = EMOJIS['fire'], f"{heat:.0f}"
-        ml_tag = ['<span foreground="#ff5f5fff">', '</span>']
+        ml_tag = ['<span foreground=\\"#ff5f5fff\\">', '</span>']
     elif heat > 70:
         sym, val = EMOJIS['temp_100'], f"{heat:.0f}"
-        ml_tag = ['<span foreground="#ffaf7fff">', '</span>']
+        ml_tag = ['<span foreground=\\"#ffaf7fff\\">', '</span>']
     elif heat > 60:
         sym, val = EMOJIS['temp_75'], f"{heat:.0f}"
-        ml_tag = ['<span foreground="#ffff5fff">', '</span>']
+        ml_tag = ['<span foreground=\\"#ffff5fff\\">', '</span>']
     elif heat > 50:
         sym, val = EMOJIS['temp_50'], f"{heat:.0f}"
     elif heat > 40:

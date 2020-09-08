@@ -124,15 +124,17 @@ class SBar():
 
     def _update_str(self, sep='|') -> None:
         '''Update bar string'''
+        sep = ","
         self.bar_str = f' {sep} '.join(
             reversed(
-                [f'\
+                ['{"full_text":"' + f'\
 {seg.symbol} \
 {seg.ml_tag[0]} {seg.magnitude} {seg.ml_tag[1]}\
-{seg.units}'
+{seg.units}' + '", "markup":"pango"}'
                  for seg in filter(lambda x: x.vis, self.bar_segs)]
             )
         )
+        self.bar_str = f", [{self.bar_str}]"
 
     def loop(self, period: int = 1, multi: int = 1) -> None:
         '''

@@ -38,7 +38,7 @@ def ip_addr(_=None) -> tuple:
         ['bash', NETCHECK], stdout=PIPE, stderr=PIPE
     ).communicate()
     stdout = stdout.decode("utf-8")
-    print("NET_STATUS:", stdout, stderr)
+    # print("NET_STATUS:", stdout, stderr)
     if not stderr:
         addr = stdout.split("\t")[0]
         net_type = int(stdout.split("\t")[2])
@@ -55,7 +55,7 @@ def ip_addr(_=None) -> tuple:
             color += 0x00007f  # #00007f  #007f7f  #7f7f7f #7f007f
         elif net_type & 1:
             color += 0x00003f  # #00003f  #007f3f  #7f7f3f #7f003f
-        ml_tag = [f'<span foreground="#{hex(color)[2:]}">', '</span>']
+        ml_tag = [f'<span foreground=\\"#{hex(color)[2:]}\\">', '</span>']
         if addr.split(".")[:2] == ["192", "168"]:
             return {'magnitude': ".".join(addr.split(".")[2:]),
                     'ml_tag': ml_tag}

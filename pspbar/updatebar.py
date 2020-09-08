@@ -61,6 +61,7 @@ def main():
     topbar.add_segs(segment=IP_ADDR, position=5, interval=0)
     topbar.add_segs(segment=NETSPEED, position=6, interval=1)
     topbar.add_segs(segment=OSNAME, position=7, interval=0)
+    print('{ "version": 1 }', "[", "[]", sep="\n")
     topbar.loop(period=period, multi=multi)
 
 
