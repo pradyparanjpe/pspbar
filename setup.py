@@ -29,7 +29,7 @@ with open("./LongDescription", 'r') as README_FILE:
 
 setup(
     name='pspbar',
-    version='0.0.0.0dev3',
+    version='0.0.0.0dev4',
     description="Prady's Swaybar in Python",
     license="GPLv3",
     long_description=LONG_DESCRIPTION,

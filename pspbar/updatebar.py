@@ -42,7 +42,9 @@ def parse_cli() -> tuple:
     parser.add_argument("-s", "--stats", type=int, default=1,
                         help="multple of 'period' to update other stats")
     args = parser.parse_args()
-    return args.period, args.stats
+    period = args.period or 1
+    multi = args.stats or 1
+    return period, multi
 
 
 def main():
@@ -57,7 +59,7 @@ def main():
     topbar.add_segs(segment=TEMPERATURE, position=3, interval=2)
     topbar.add_segs(segment=RAM, position=4, interval=1)
     topbar.add_segs(segment=IP_ADDR, position=5, interval=0)
-    topbar.add_segs(segment=NETSPEED, position=6, interval=2)
+    topbar.add_segs(segment=NETSPEED, position=6, interval=1)
     topbar.add_segs(segment=OSNAME, position=7, interval=0)
     topbar.loop(period=period, multi=multi)
 
