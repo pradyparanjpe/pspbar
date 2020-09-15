@@ -11,8 +11,7 @@
 #
 # pspbar is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
 # along with pspbar.  If not, see <https://www.gnu.org/licenses/>.
@@ -20,13 +19,17 @@
 '''Classes'''
 
 
+from sys import stdin
 from time import sleep
+from select import select
+from subprocess import Popen
 
 
 class BarSeg():
     '''Segment object of the SBar'''
     def __init__(self, **kwargs) -> None:
         '''
+        name: name-handle of the segment
         symbol: displayed on bar
         magnitude: the main thing
         units: suffixed to magnitude
@@ -45,7 +48,7 @@ class BarSeg():
         self.ml_tag = None
         self.magnitude = None
         for key in ['magnitude', 'symbol', 'method',
-                    'units', 'vis', 'mem', 'ml_tag']:
+                    'units', 'vis', 'mem', 'ml_tag', 'name']:
             setattr(self, key, kwargs.get(key, ''))
         self.method = self.method or (lambda: (None, None, None, True))
         if self.vis == '':
@@ -152,4 +155,8 @@ class SBar():
             self._update_str(" ")
             print(self.bar_str, flush=True)
             long_per = (long_per + period) % multi
-            sleep(period)
+            # sleep(period)
+            trig, _, _ = select([stdin], [], [], period)
+            if trig:
+                feedback = stdin.readline().rstrip("\n")
+                Popen(["notify-send", f"inputs:{feedback}"])

@@ -28,4 +28,4 @@ def time(_=None) -> tuple:
     return {'magnitude': datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 
 
-TIME = BarSeg(symbol='\u23f0', method=time)
+TIME = BarSeg(name="time", symbol='\u23f0', method=time)

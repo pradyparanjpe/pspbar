@@ -41,13 +41,14 @@ def _bat_act(conn, fill, mem) -> None:
         if fill > 99 and mem < 5:
             mem += 1
             # Send only 5 notifications
-            Popen(['notify-send', 'Battery_charged'])
+            Popen(['notify-send', '-t', "5000", 'Battery_charged'])
     else:
         mem = 0
         if fill < 20:
-            Popen(['notify-send', 'Battery Too Low'])
+            Popen(['notify-send', "-u", "critical", 'Battery Too Low'])
         elif fill < 10:
-            Popen(['notify-send', 'Battery Too Low Suspending Session...'])
+            Popen(['notify-send', "-u", "critical",
+                   'Battery Too Low Suspending Session...'])
         elif fill < 5:
             Popen(['systemctl', 'suspend'])
     return mem
@@ -86,4 +87,8 @@ def battery(mem=None) -> tuple:
     return {'symbol': sym, 'magnitude': val, 'mem': mem, 'ml_tag': ml_tag}
 
 
-BATTERY = BarSeg(symbol=EMOJIS['bat_0'], method=battery, units="%", mem=0, )
+BATTERY = BarSeg(name="battery",
+                 symbol=EMOJIS['bat_0'],
+                 method=battery,
+                 units="%",
+                 mem=0)

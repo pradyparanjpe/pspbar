@@ -6,9 +6,7 @@
 #
 # pspbar is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
+# the Free Software Foundation, either version 3 of the License, or # (at your option) any later version. #
 # pspbar is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -59,9 +57,9 @@ def main():
     topbar.add_segs(segment=TEMPERATURE, position=3, interval=2)
     topbar.add_segs(segment=RAM, position=4, interval=1)
     topbar.add_segs(segment=IP_ADDR, position=5, interval=0)
-    topbar.add_segs(segment=NETSPEED, position=6, interval=1)
+    topbar.add_segs(segment=NETSPEED, position=6, interval=2)
     topbar.add_segs(segment=OSNAME, position=7, interval=0)
-    print('{ "version": 1 }', "[", "[]", sep="\n")
+    print('{ "version": 1, "click_events": true }', "[", "[]", sep="\n")
     topbar.loop(period=period, multi=multi)
 
 

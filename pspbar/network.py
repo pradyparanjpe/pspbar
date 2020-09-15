@@ -75,5 +75,6 @@ def netspeed(mem=None) -> tuple:
             'mem': [mem[0], down_l, up_l]}
 
 
-IP_ADDR = BarSeg(symbol=chr(0x1f4f6), method=ip_addr, units="")
-NETSPEED = BarSeg(symbol='\u21f5\u25BC', method=netspeed, units='\u25B2MB/s')
+IP_ADDR = BarSeg(name="ip", symbol=chr(0x1f4f6), method=ip_addr, units="")
+NETSPEED = BarSeg(name="netspeed", symbol='\u21f5\u25BC', method=netspeed,
+                  units='\u25B2MB/s')

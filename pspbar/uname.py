@@ -29,5 +29,5 @@ def osname(_=None) -> tuple:
     return {'magnitude': f"{uname().release.split('.')[-2]}"}
 
 
-OSNAME = BarSeg(symbol=chr(0x1f427), method=osname,
+OSNAME = BarSeg(name="uname", symbol=chr(0x1f427), method=osname,
                 ml_tag=['<span foreground=\\"#7f9fffff\\">', '</span>'])

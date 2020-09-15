@@ -35,4 +35,4 @@ def ram_use(_=None) -> tuple:
     return {'magnitude': f"{ram_fill:.0f}", 'ml_tag': ml_tag}
 
 
-RAM = BarSeg(symbol='\uf233', method=ram_use, units="%")
+RAM = BarSeg(name="ram", symbol='\uf233', method=ram_use, units="%")

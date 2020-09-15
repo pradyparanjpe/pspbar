@@ -23,8 +23,11 @@
 from setuptools import setup
 
 
-with open("./LongDescription", 'r') as README_FILE:
-    LONG_DESCRIPTION = README_FILE.read()
+try:
+    with open("./LongDescription", 'r') as README_FILE:
+        LONG_DESCRIPTION = README_FILE.read()
+except FileNotFoundError:
+    LONG_DESCRIPTION=""
 
 
 setup(

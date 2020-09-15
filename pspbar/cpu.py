@@ -29,4 +29,4 @@ def cpu(_=None) -> tuple:
     return {'magnitude': f"{cpu_percent():.2f}"}
 
 
-CPU = BarSeg(symbol=chr(0x1f9e0), method=cpu, units="%")
+CPU = BarSeg(name="cpu", symbol=chr(0x1f9e0), method=cpu, units="%")

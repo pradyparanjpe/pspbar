@@ -56,4 +56,7 @@ def heat_mon(_=None) -> tuple:
     return {'symbol': sym, 'magnitude': val, 'ml_tag': ml_tag}
 
 
-TEMPERATURE = BarSeg(symbol=EMOJIS['fire'], method=heat_mon, units='\u2103')
+TEMPERATURE = BarSeg(name="temperature",
+                     symbol=EMOJIS['fire'],
+                     method=heat_mon,
+                     units='\u2103') 
