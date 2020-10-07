@@ -5,16 +5,16 @@
 # This file is part of pspbar.
 #
 # pspbar is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
+# it under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
 # pspbar is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
+# GNU Lesser General Public License for more details.
 #
-# You should have received a copy of the GNU General Public License
+# You should have received a copy of the GNU Lesser General Public License
 # along with pspbar.  If not, see <https://www.gnu.org/licenses/>.
 #
 '''setup'''
@@ -27,7 +27,7 @@ try:
     with open("./LongDescription", 'r') as README_FILE:
         LONG_DESCRIPTION = README_FILE.read()
 except FileNotFoundError:
-    LONG_DESCRIPTION=""
+    LONG_DESCRIPTION = ""
 
 
 setup(
