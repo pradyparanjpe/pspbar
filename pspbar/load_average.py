@@ -37,7 +37,7 @@ def loadavg(_=None) -> Dict[str, str]:
         ml_tag = ['<span foreground=\\"#ffff5fff\\">', '</span>']
     else:
         return {'vis': False}
-    value = "|".join((str(load) for load in load_avg))
+    value = "|".join((f'{load:.0f}' for load in load_avg))
     return {'magnitude': value, 'ml_tag': ml_tag}
 
 
