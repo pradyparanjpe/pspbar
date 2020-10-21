@@ -6,7 +6,8 @@
 #
 # pspbar is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or # (at your option) any later version. #
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 # pspbar is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -30,6 +31,7 @@ from .network import IP_ADDR, NETSPEED
 from .temperature import TEMPERATURE
 from .uname import OSNAME
 from .battery import BATTERY
+from .load_average import LOAD
 
 
 def parse_cli() -> tuple:
@@ -59,6 +61,7 @@ def main():
     topbar.add_segs(segment=IP_ADDR, position=5, interval=0)
     topbar.add_segs(segment=NETSPEED, position=6, interval=2)
     topbar.add_segs(segment=OSNAME, position=7, interval=0)
+    topbar.add_segs(segment=LOAD, position=8, interval=2)
     print('{ "version": 1, "click_events": true }', "[", "[]", sep="\n")
     topbar.loop(period=period, multi=multi)
 

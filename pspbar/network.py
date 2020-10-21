@@ -20,6 +20,7 @@
 '''(WIFI)Internet-monitoring segments'''
 
 
+from typing import Dict
 from os.path import join as joinpath
 from os.path import dirname as pathdirname
 from subprocess import Popen, PIPE
@@ -31,7 +32,7 @@ NETCHECK = joinpath(pathdirname(__file__), 'shell_dep',
                     'netcheck.sh')
 
 
-def ip_addr(_=None) -> tuple:
+def ip_addr(_=None) -> Dict[str, str]:
     '''Create IP ADDRESS string'''
     color = 0x777777
     stdout, stderr = Popen(
@@ -63,7 +64,7 @@ def ip_addr(_=None) -> tuple:
     return {'vis': False}
 
 
-def netspeed(mem=None) -> tuple:
+def netspeed(mem=None) -> Dict[str, str]:
     '''Total internet Speed'''
     net_stats = net_io_counters()
     if not net_stats:

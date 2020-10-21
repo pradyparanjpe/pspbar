@@ -20,6 +20,7 @@
 '''Temperature monitoring and acting segment'''
 
 
+from typing import Dict
 from psutil import sensors_temperatures
 from .classes import BarSeg
 
@@ -34,7 +35,7 @@ EMOJIS = {
 }
 
 
-def heat_mon(_=None) -> tuple:
+def heat_mon(_=None) -> Dict[str, str]:
     '''Create Temperature summary string'''
     ml_tag = ['', '']
     heat = sensors_temperatures()['coretemp'][0].current
@@ -59,4 +60,4 @@ def heat_mon(_=None) -> tuple:
 TEMPERATURE = BarSeg(name="temperature",
                      symbol=EMOJIS['fire'],
                      method=heat_mon,
-                     units='\u2103') 
+                     units='\u2103')

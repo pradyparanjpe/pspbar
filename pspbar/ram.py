@@ -20,11 +20,12 @@
 '''RAM monitoring segment'''
 
 
+from typing import Dict
 from psutil import virtual_memory
 from .classes import BarSeg
 
 
-def ram_use(_=None) -> tuple:
+def ram_use(_=None) -> Dict[str, str]:
     '''Create RAM summary string'''
     ram_fill = virtual_memory().percent
     ml_tag = ['', '']

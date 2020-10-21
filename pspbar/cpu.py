@@ -20,11 +20,12 @@
 '''CPU monitor'''
 
 
+from typing import Dict
 from psutil import cpu_percent
 from .classes import BarSeg
 
 
-def cpu(_=None) -> tuple:
+def cpu(_=None) -> Dict[str, str]:
     '''Create CPU summary string'''
     return {'magnitude': f"{cpu_percent():.2f}"}
 

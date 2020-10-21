@@ -19,11 +19,12 @@
 #
 '''Display date-time clock'''
 
+from typing import Dict
 from datetime import datetime
 from .classes import BarSeg
 
 
-def time(_=None) -> tuple:
+def time(_=None) -> Dict[str, str]:
     '''create Time summary string'''
     return {'magnitude': datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
 

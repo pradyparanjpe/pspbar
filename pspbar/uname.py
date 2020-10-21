@@ -20,11 +20,12 @@
 '''Display OS name'''
 
 
+from typing import Dict
 from os import uname
 from .classes import BarSeg
 
 
-def osname(_=None) -> tuple:
+def osname(_=None) -> Dict[str, str]:
     '''Create Linux release string'''
     return {'magnitude': f"{uname().release.split('.')[-2]}"}
 

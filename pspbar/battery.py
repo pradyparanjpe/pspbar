@@ -20,6 +20,7 @@
 '''Battery monitor and action segment'''
 
 
+from typing import Dict
 from subprocess import Popen
 from psutil import sensors_battery
 from .classes import BarSeg
@@ -35,7 +36,7 @@ EMOJIS = {
 }
 
 
-def _bat_act(conn, fill, mem) -> None:
+def _bat_act(conn, fill, mem) -> int:
     '''Emergency Actions'''
     if conn:
         if fill > 99 and mem < 5:
@@ -54,7 +55,7 @@ def _bat_act(conn, fill, mem) -> None:
     return mem
 
 
-def battery(mem=None) -> tuple:
+def battery(mem=None) -> Dict[str, str]:
     '''Create Battery summary string'''
     sym_ml = ['', '']
     bat_probe = sensors_battery()
