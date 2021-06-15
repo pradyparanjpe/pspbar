@@ -1,3 +1,7 @@
+# UNMAINTAINED
+## Assimilated into ppsi
+  **THIS PROJECT HAS BEEN ASSIMILATED IN THE PROJECT [PPSI](https://github.com/pradyparanjpe/ppsi.git)**
+
 # pspbar
 
 ## Installation
